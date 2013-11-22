@@ -6,9 +6,9 @@ import org.junit.Test;
 
 public class PersonTest {
 
-    private static final Person JLOCKER = new Person("Jiříček");
-    private static final Person LPETROVI = new Person("Lukášek");
-    private static final Person ZKREJCOV = new Person("Zuzanka");
+    private static final Person JLOCKER = Actor.JLOCKER.getPerson();
+    private static final Person LPETROVI = Actor.LPETROVI.getPerson();
+    private static final Person ZKREJCOV = Actor.ZKREJCOV.getPerson();
 
     @Test
     public void testDifferentNameInequality() {

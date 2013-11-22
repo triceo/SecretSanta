@@ -14,9 +14,9 @@ import org.junit.runners.Parameterized.Parameters;
 @RunWith(Parameterized.class)
 public class GroupRemovalTest {
 
-    private static final Person P1 = new Person("Strejda Winkler");
-    private static final Person P2 = new Person("Otec Synek");
-    private static final Person P3 = new Person("Děda Pechanec");
+    private static final Person P1 = Actor.MWINKLER.getPerson();
+    private static final Person P2 = Actor.RSYNEK.getPerson();
+    private static final Person P3 = Actor.JPECHANE.getPerson();
 
     @Parameters
     public static Collection<Object[]> data() {
@@ -32,7 +32,6 @@ public class GroupRemovalTest {
     }
 
     private final Person firstToAct;
-
     private final Group group;
     private final Person secondToAct;
     private final Person thirdToAct;
@@ -52,14 +51,8 @@ public class GroupRemovalTest {
         Assert.assertNotEquals(this.secondToAct, secondRemoved);
         final Person thirdRemoved = this.group.randomlyRemovePerson(this.thirdToAct);
         Assert.assertNotEquals(this.thirdToAct, thirdRemoved);
-        // make sure all are removed
-        try {
-            this.group.randomlyRemovePerson();
-            Assert.fail("There should have been no one else to remove.");
-        } catch (final IllegalStateException ex) {
-            Assert.assertTrue("The group should have been empty.", this.group.getRemainingPeople().isEmpty());
-        }
         // make sure all have been chosen
+        Assert.assertTrue("The group should have been empty.", this.group.getRemainingPeople().isEmpty());
         final Collection<Person> people = new TreeSet<>();
         people.add(firstRemoved);
         people.add(secondRemoved);
