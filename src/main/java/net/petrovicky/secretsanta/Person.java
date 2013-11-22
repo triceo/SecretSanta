@@ -50,4 +50,9 @@ public class Person implements Comparable<Person> {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return "Person [" + (this.name != null ? "name=" + this.name : "") + "]";
+    }
+
 }
