@@ -32,7 +32,6 @@ public class Group {
         }
         this.random = random;
         this.people = new ArrayList<>(new TreeSet<Person>(people));
-        Collections.shuffle(this.people, random);
         Group.LOGGER.info("New group: {}.", this.people);
     }
 
